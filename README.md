@@ -75,3 +75,13 @@ A `Directory` object contains a map of child nodes, where the key is the file/di
 ## 💻 Example Usage
 
 Here is a sample session interacting with the Virtual File System:
+
+Welcome to the Virtual File System! /> mkdir documents /> ls drw- documents /> cd documents /documents> touch report.txt /documents> touch notes.txt /documents> ls -rw- report.txt -rw- notes.txt /documents> cd .. /> pwd / /> exit Goodbye!
+
+
+---
+
+## 👥 Contributors
+
+* [Your Name] - ([Your GitHub Profile Link])
+* [Your Partner's Name] - ([Their GitHub Profile Link])
