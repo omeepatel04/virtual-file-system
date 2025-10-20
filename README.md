@@ -76,8 +76,9 @@ A `Directory` object contains a map of child nodes, where the key is the file/di
 
 Here is a sample session interacting with the Virtual File System:
 
+```bash
 Welcome to the Virtual File System! /> mkdir documents /> ls drw- documents /> cd documents /documents> touch report.txt /documents> touch notes.txt /documents> ls -rw- report.txt -rw- notes.txt /documents> cd .. /> pwd / /> exit Goodbye!
-
+```
 
 ---
 
