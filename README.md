@@ -81,8 +81,3 @@ Welcome to the Virtual File System! /> mkdir documents /> ls drw- documents /> c
 ```
 
 ---
-
-## 👥 Contributors
-
-* [Your Name] - ([Your GitHub Profile Link])
-* [Your Partner's Name] - ([Their GitHub Profile Link])
