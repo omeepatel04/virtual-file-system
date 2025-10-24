@@ -21,4 +21,3 @@ FileSystemNode* Directory::findChild(const std::string& name){
 
     return nullptr;
 }
-
