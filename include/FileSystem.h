@@ -12,19 +12,13 @@ class FileSystem {
 
     public:
 
-    FileSystem() {
-        root = new Directory("/", nullptr);
-        currentDirectory = root;
-    }
+    FileSystem();
+    ~FileSystem();
 
-    ~FileSystem(){
-        delete root;
-    }
-
-    Directory* getRoot() const {return root;}
-    Directory* getCurrentDirectory() const {return currentDirectory;}
+    Directory* getRoot() const;
+    Directory* getCurrentDirectory() const;
     void setCurrentDirectory(Directory* directory);
 
-}
+};
 
 #endif
