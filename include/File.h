@@ -19,7 +19,7 @@ public:
     // TODO: Implement the constructor.
     // It should accept a name and a pointer to its parent directory.
     // It must call the constructor of the base class (FileSystemNode) to initialize the name and parent.
-    File(const string& name, FileSystemNode* parent);
+    File(const string& name, FileSystemNode* parent): FileSystemNode(name, parent) {}
 
 
     // --- Destructor ---
@@ -34,7 +34,7 @@ public:
 
     // TODO: Implement the getType() function.
     // This function should return the string "File".
-    string getType() const override;
+    string getType() const override {return "File";}
 
     // TODO: Implement the printInfo() function.
     // This function should print details about the file, for example:
@@ -46,10 +46,10 @@ public:
     // --- File-Specific Methods ---
 
     // TODO: Implement a "getter" for the file's content.
-    string getContent() const;
+    string getContent() const {return content;}
 
     // TODO: Implement a "setter" to change the file's content.
-    void setContent(const string& newContent);
+    void setContent(const string& newContent) {content = newContent;}
 };
 
 #endif // FILE_H
