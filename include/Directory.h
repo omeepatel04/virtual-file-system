@@ -1,5 +1,5 @@
-#ifndef DIRECTORY
-#define DIRECTORY
+#ifndef DIRECTORY_H
+#define DIRECTORY_H
 
 #include "FileSystemNode.h"
 #include <string>
