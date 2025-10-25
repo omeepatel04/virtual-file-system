@@ -31,5 +31,5 @@ class Directory : public FileSystemNode {
     }
 
     std::map<std::string, FileSystemNode*>& getChildren(){return children;}
-
+};
 #endif
