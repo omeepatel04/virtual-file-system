@@ -20,7 +20,7 @@ void FileSystem::setCurrentDirectory(Directory* directory){
 
 std::string FileSystem::getPath(Directory* current) const {
     if (current == root) {
-        return "/ "; 
+        return "/>"; 
     }
 
     std::string path;

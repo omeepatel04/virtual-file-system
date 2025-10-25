@@ -3,9 +3,11 @@
 
 
 
-Directory::~Directory(){
-    for(auto const& [name, nodePtr] : children){
-        delete nodePtr;
+Directory::~Directory() {
+    // This is the C++11 compatible way to loop through a map
+    for (auto const& pair : children) {
+        FileSystemNode* nodePtr = pair.second; // Get the pointer from the map's pair
+        delete nodePtr; // Delete the pointer
     }
 }
 
