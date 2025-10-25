@@ -53,6 +53,17 @@ int main() {
             Directory* newDir = new Directory(dirName, fs.getCurrentDirectory());
             fs.getCurrentDirectory()->addChild(newDir);
 
+        } else if(command=="ls"){
+            auto& chMap = fs.getCurrentDirectory()->getChildren();
+            if(chMap.empty()) continue;
+
+            for(auto const& pair: chMap){
+                string name = pair.first;
+                FileSystemNode* nodePtr = pair.second;
+                nodePtr->printInfo();
+                cout << endl;
+            }
+
         } else if (command == "help") {
              cout << "Available commands:" << endl;
              cout << "  mkdir <name>  - Create a new directory" << endl;
