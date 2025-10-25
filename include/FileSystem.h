@@ -18,6 +18,8 @@ class FileSystem {
     Directory* getRoot() const;
     Directory* getCurrentDirectory() const;
     void setCurrentDirectory(Directory* directory);
+    std::string getPath(Directory* directory) const;
+
 
 };
 
