@@ -64,9 +64,26 @@ int main() {
                 cout << endl;
             }
 
+        } else if (command == "touch") {
+            string fileName;
+            ss >> fileName;
+            if (fileName.empty()) {
+                cout << "Usage: touch <file_name>" << endl; // Improvement 2: Add endl
+                continue;
+            }
+
+            if (fs.getCurrentDirectory()->findChild(fileName) != nullptr) {
+                cout << "Error: Name '" << fileName << "' already exists." << endl; // Improvement 2: Add endl
+                continue;
+            }
+ 
+            File* newFile = new File(fileName, fs.getCurrentDirectory());
+            fs.getCurrentDirectory()->addChild(newFile);
+            
         } else if (command == "help") {
              cout << "Available commands:" << endl;
              cout << "  mkdir <name>  - Create a new directory" << endl;
+             cout << "  touch <name>  - Create a new file" << endl;
              // We will add more commands here
              cout << "  exit          - Exit the simulator" << endl;
 
