@@ -84,7 +84,7 @@ int main() {
             string pathName;
             ss >> pathName;
 
-            if(pathName==""){
+            if(pathName.empty()){
                 fs.setCurrentDirectory(fs.getRoot());
                 continue;
             } else if(pathName==".."){
@@ -136,12 +136,15 @@ int main() {
                 }
             }
 
+        } else if(command=="pwd"){
+            cout << fs.getPwd() << endl;
         } else if (command == "help") {
              cout << "Available commands:" << endl;
              cout << "  mkdir <name>  - Create a new directory" << endl;
              cout << "  touch <name>  - Create a new file" << endl;
              cout << "  cd <path>     - Change Directory" << endl;
              cout << "  rm <name>     - Remove File/Directory" << endl;
+             cout << "  pwd           - Print Working Directory" << endl;
              // We will add more commands here
              cout << "  exit          - Exit the simulator" << endl;
 
