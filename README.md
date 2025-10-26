@@ -93,12 +93,15 @@ g++ -std=c++17 -Wall -I include -o vfs src/main.cpp src/File.cpp src/Directory.c
 ```
 
 -Wall: Enables all common compiler warnings (good practice).
+
 -I include: Tells the compiler to look in the include/ folder for header files.
 
 ---
 
 ### 💻 Example Session
-``bash
+
+```bash
+
 $ ./vfs
 Welcome to the Virtual File System!
 Type 'load vfs.dat' to load previous session.
