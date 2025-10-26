@@ -38,6 +38,24 @@ std::string FileSystem::getPath(Directory* current) const {
 }
 
 
+std::string FileSystem::getPwd() const {
+    Directory* current = currentDirectory; 
+
+    if (current == root) {
+        return "/"; 
+    }
+
+    std::string path;
+
+    while (current != root) { 
+        path = "/" + current->getName() + path;
+        current = (Directory*)current->getParent();
+    }
+
+    return path;
+}
+
+
 
 
 
