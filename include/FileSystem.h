@@ -5,13 +5,11 @@
 #include <string>
 
 class FileSystem {
-    private:
-
+private:
     Directory* root;
     Directory* currentDirectory;
 
-    public:
-
+public:
     FileSystem();
     ~FileSystem();
 
@@ -21,7 +19,9 @@ class FileSystem {
     std::string getPath(Directory* current) const;
     std::string getPwd() const;
 
-
+    // --- NEW ---
+    void saveSystem(const std::string& filename) const;
+    void loadSystem(const std::string& filename);
 };
 
-#endif
+#endif // FILESYSTEM_H

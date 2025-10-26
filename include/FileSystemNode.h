@@ -1,35 +1,32 @@
 #ifndef FILESYSTEMNODE_H
 #define FILESYSTEMNODE_H
 
-#include <string> // For using std::string
+#include <string>
+#include <fstream> // --- NEW --- For file operations
 
+using std::string;
 
-// An abstract base class representing any entity in the file system (a file or a directory).
 class FileSystemNode {
 protected:
-    std::string name;
-    FileSystemNode* parent; // Pointer to the parent directory
+    string name;
+    FileSystemNode* parent;
 
 public:
-    // Constructor
-    FileSystemNode(const std::string& name, FileSystemNode* parent)
+    FileSystemNode(const string& name, FileSystemNode* parent)
         : name(name), parent(parent) {}
 
-    // Virtual destructor is crucial for base classes with virtual functions.
     virtual ~FileSystemNode() {}
 
-    // --- Getters ---
-    std::string getName() const { return name; }
+    string getName() const { return name; }
     FileSystemNode* getParent() const { return parent; }
 
-    // --- Pure Virtual Functions (The "Contract") ---
-
-    // Must be implemented by derived classes (File, Directory).
-    // Returns the type of the node, e.g., "File" or "Directory".
-    virtual std::string getType() const = 0;
-
-    // Prints detailed information about the node.
+    virtual string getType() const = 0;
     virtual void printInfo() const = 0;
+
+    // --- NEW ---
+    // A "contract" function to make all nodes saveable
+    // We pass an output file stream (ofstream) by reference
+    virtual void save(std::ofstream& file) const = 0;
 };
 
 #endif // FILESYSTEMNODE_H

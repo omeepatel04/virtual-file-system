@@ -1,19 +1,32 @@
-#include "File.h"      // Include the header file for the File class
-#include <iostream>   // Now we can safely include iostream here
+#include "File.h"
+#include <iostream>
+#include <fstream> // --- NEW ---
 
-// Use the specific 'using' declarations you need in the .cpp file
 using std::cout;
 using std::endl;
+using std::ofstream; // --- NEW ---
 
-//
-// --- Implementation for File::printInfo ---
-//
-// We use 'File::' to tell the compiler we are defining the
-// printInfo function that belongs to the File class.
-//
 void File::printInfo() const {
-    // TODO: Implement the printInfo logic.
-    // You can now safely use 'cout' and access 'name' directly.
-    // Remember, 'name' was inherited from FileSystemNode.
     cout << "-rw-    " << name;
+}
+
+// --- NEW ---
+// Helper function to write a string safely to a binary file
+// We first write the size of the string, then the string's data.
+inline void writeString(ofstream& file, const string& str) {
+    size_t len = str.length();
+    file.write(reinterpret_cast<const char*>(&len), sizeof(len));
+    file.write(str.c_str(), len);
+}
+
+// --- NEW ---
+// Implementation of the save contract for a File
+void File::save(ofstream& file) const {
+    // 1. Write a marker character 'F' to identify this as a File
+    char type = 'F';
+    file.write(&type, sizeof(type));
+
+    // 2. Write the name and content using our helper
+    writeString(file, this->name);
+    writeString(file, this->content);
 }

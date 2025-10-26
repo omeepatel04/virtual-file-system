@@ -4,32 +4,32 @@
 #include "FileSystemNode.h"
 #include <string>
 #include <map>
+#include <fstream> // <-- Make sure this is included
 
 class File;
 
 class Directory : public FileSystemNode {
-    private:
+private:
     std::map<std::string, FileSystemNode*> children;
 
-    public:
-    Directory(const std::string &name, FileSystemNode* parent) : FileSystemNode(name, parent) {}
+public:
+    Directory(const std::string& name, FileSystemNode* parent) 
+        : FileSystemNode(name, parent) {}
 
     virtual ~Directory();
 
-    std::string getType() const override {return "Directory";}
-    
+    string getType() const override { return "Directory"; }
     void printInfo() const override;
 
+    // --- NEW ---
+    // Add this declaration to fulfill the contract from FileSystemNode
+    void save(std::ofstream& file) const override;
+    // --- END NEW ---
+
     FileSystemNode* findChild(const std::string& name);
-
-    void addChild(FileSystemNode* child){
-        children[child->getName()] = child;
-    }
-
-    void removeChild(const std::string& name){
-        children.erase(name);
-    }
-
-    std::map<std::string, FileSystemNode*>& getChildren(){return children;}
+    void addChild(FileSystemNode* child);
+    void removeChild(const std::string& name);
+    std::map<std::string, FileSystemNode*>& getChildren();
 };
-#endif
+
+#endif // DIRECTORY_H
