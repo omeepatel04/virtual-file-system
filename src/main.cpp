@@ -138,6 +138,38 @@ int main() {
 
         } else if(command=="pwd"){
             cout << fs.getPwd() << endl;
+        } else if(command=="write"){
+            string fileName;
+            ss >> fileName;
+
+            if(fileName.empty()){
+                cout << "Usage: write <filename> \"content\"" << endl;
+                continue;
+            }
+            
+            FileSystemNode* node = fs.getCurrentDirectory()->findChild(fileName);
+            if(node == nullptr){
+                cout << "Error: No such file: '" << fileName << "'" << endl;
+                continue;
+            }
+            if(node->getType() != "File"){
+                cout << "Error: Not a file: '" << fileName << "'" << endl;
+                continue;
+            }
+
+            string contentLine;
+            getline(ss, contentLine);
+            size_t firstQuote = contentLine.find('\"');
+            size_t lastQuote = contentLine.rfind('\"');
+            if (firstQuote == std::string::npos || lastQuote == std::string::npos || firstQuote == lastQuote){
+                cout << "Error: Content must be in double quotes (e.g. \"hello\")." << endl;
+                continue;
+            }
+
+            string actualContent = contentLine.substr(firstQuote + 1, lastQuote - firstQuote - 1);
+            File* file = (File*)node;
+            file->setContent(actualContent);
+
         } else if (command == "help") {
              cout << "Available commands:" << endl;
              cout << "  mkdir <name>  - Create a new directory" << endl;
@@ -145,6 +177,7 @@ int main() {
              cout << "  cd <path>     - Change Directory" << endl;
              cout << "  rm <name>     - Remove File/Directory" << endl;
              cout << "  pwd           - Print Working Directory" << endl;
+             cout << "  write         - Write in a file" << endl;
              // We will add more commands here
              cout << "  exit          - Exit the simulator" << endl;
 
