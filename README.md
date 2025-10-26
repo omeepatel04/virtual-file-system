@@ -136,6 +136,10 @@ drw-    projects
 
 --- 
 
-## 👥 Connect
+## 🤝 Connect
 
-Om Patel - [LinkedIn](https://www.linkedin.com/in/ompatel4306/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ompatel4306/)
+&nbsp;
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/omeepatel04)
+&nbsp;
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:25bce518@nirmauni.ac.in)
