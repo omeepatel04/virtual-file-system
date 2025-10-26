@@ -90,12 +90,15 @@ If you don't have make, you can compile all source files directly:
 
 g++ -std=c++17 -Wall -I include -o vfs src/main.cpp src/File.cpp src/Directory.cpp src/FileSystem.cpp
 -std=c++17: Enables the C++17 standard.
+```
 
 -Wall: Enables all common compiler warnings (good practice).
-
 -I include: Tells the compiler to look in the include/ folder for header files.
 
-💻 Example Session
+---
+
+### 💻 Example Session
+``bash
 $ ./vfs
 Welcome to the Virtual File System!
 Type 'load vfs.dat' to load previous session.
@@ -125,7 +128,11 @@ drw-    projects
 /projects> cat todo.txt
 1. Finish VFS Project. 2. Update resume.
 /projects>
-👥 Contributors
-[Your Name] - ([Your GitHub Profile Link])
 
-[Your Partner's Name] - ([Their GitHub Profile Link])
+```
+
+--- 
+
+## 👥 Connect
+
+Om Patel - [LinkedIn](https://www.linkedin.com/in/ompatel4306/)
