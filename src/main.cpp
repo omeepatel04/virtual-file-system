@@ -68,22 +68,80 @@ int main() {
             string fileName;
             ss >> fileName;
             if (fileName.empty()) {
-                cout << "Usage: touch <file_name>" << endl; // Improvement 2: Add endl
+                cout << "Usage: touch <file_name>" << endl;
                 continue;
             }
 
             if (fs.getCurrentDirectory()->findChild(fileName) != nullptr) {
-                cout << "Error: Name '" << fileName << "' already exists." << endl; // Improvement 2: Add endl
+                cout << "Error: Name '" << fileName << "' already exists." << endl;
                 continue;
             }
  
             File* newFile = new File(fileName, fs.getCurrentDirectory());
             fs.getCurrentDirectory()->addChild(newFile);
             
+        } else if(command=="cd") {
+            string pathName;
+            ss >> pathName;
+
+            if(pathName==""){
+                fs.setCurrentDirectory(fs.getRoot());
+                continue;
+            } else if(pathName==".."){
+                FileSystemNode* parent = fs.getCurrentDirectory()->getParent();
+                if (parent != nullptr) {
+                    fs.setCurrentDirectory((Directory*)parent);
+                }
+            } else {
+                FileSystemNode* node = fs.getCurrentDirectory()->findChild(pathName);
+                if(node == nullptr){
+                    cout << "Error: No such directory: '" << pathName << "'" << endl;
+                    continue;
+                } else if(node->getType() == "Directory"){
+                    fs.setCurrentDirectory((Directory*)node);
+                    continue;
+                } else {
+                    cout << "Error: Not a directory: '" << pathName << "'" << endl;
+                    continue;
+                }
+            }
+
+        } else if(command=="rm"){
+            string name;
+            ss >> name;
+
+            if(name.empty()){
+                cout << "Usage: <rm file/directory_name>" << endl;
+                continue;
+            }
+
+            Directory* currentDir = fs.getCurrentDirectory();
+            FileSystemNode* nodeToRemove = currentDir->findChild(name);
+            if(nodeToRemove==nullptr){
+                cout << "Error: No such file or directory: '" << name << "'" << endl;
+                continue;
+            }
+
+            if (nodeToRemove->getType() == "File"){
+                currentDir->removeChild(name);
+                delete nodeToRemove;
+            } else {
+                Directory* dirToRemove = (Directory*)nodeToRemove;
+                if (dirToRemove->getChildren().empty()){
+                    currentDir->removeChild(name);
+                    delete dirToRemove;
+                } else {
+                    cout << "Error: Cannot remove '" << name << "' not empty" << endl;
+                    continue;
+                }
+            }
+
         } else if (command == "help") {
              cout << "Available commands:" << endl;
              cout << "  mkdir <name>  - Create a new directory" << endl;
              cout << "  touch <name>  - Create a new file" << endl;
+             cout << "  cd <path>     - Change Directory" << endl;
+             cout << "  rm <name>     - Remove File/Directory" << endl;
              // We will add more commands here
              cout << "  exit          - Exit the simulator" << endl;
 
