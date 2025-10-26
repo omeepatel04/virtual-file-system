@@ -19,6 +19,7 @@ class FileSystem {
     Directory* getCurrentDirectory() const;
     void setCurrentDirectory(Directory* directory);
     std::string getPath(Directory* current) const;
+    std::string getPwd() const;
 
 
 };
