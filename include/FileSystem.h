@@ -19,9 +19,9 @@ public:
     std::string getPath(Directory* current) const;
     std::string getPwd() const;
 
-    // --- NEW ---
+
     void saveSystem(const std::string& filename) const;
     void loadSystem(const std::string& filename);
 };
 
-#endif // FILESYSTEM_H
+#endif 

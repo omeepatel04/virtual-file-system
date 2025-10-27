@@ -1,15 +1,13 @@
 #include "Directory.h"
 #include <iostream>
-#include <fstream> // --- NEW ---
+#include <fstream> 
 
 using std::cout;
 using std::endl;
-using std::ofstream; // --- NEW ---
-using std::string; // --- NEW ---
+using std::ofstream; 
+using std::string; 
 
-// --- NEW ---
-// We need the writeString helper here too.
-// (In a bigger project, this would go in a shared "utils.h")
+
 inline void writeString(ofstream& file, const string& str) {
     size_t len = str.length();
     file.write(reinterpret_cast<const char*>(&len), sizeof(len));
@@ -35,7 +33,7 @@ FileSystemNode* Directory::findChild(const string& name) {
     return nullptr;
 }
 
-// --- NEW ---
+
 // Implementation of the save contract for a Directory
 void Directory::save(ofstream& file) const {
     // 1. Write a marker character 'D' for Directory

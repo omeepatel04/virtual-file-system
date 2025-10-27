@@ -3,7 +3,7 @@
 
 #include "FileSystemNode.h"
 #include <string>
-#include <fstream> // <-- Make sure this is included
+#include <fstream> 
 
 using std::string;
 
@@ -20,13 +20,12 @@ public:
     string getType() const override { return "File"; }
     void printInfo() const override;
 
-    // --- NEW ---
-    // Add this declaration to fulfill the contract from FileSystemNode
+
     void save(std::ofstream& file) const override;
-    // --- END NEW ---
+
 
     string getContent() const { return content; }
     void setContent(const string& newContent) { content = newContent; }
 };
 
-#endif // FILE_H
+#endif 

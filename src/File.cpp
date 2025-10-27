@@ -1,16 +1,15 @@
 #include "File.h"
 #include <iostream>
-#include <fstream> // --- NEW ---
+#include <fstream> 
 
 using std::cout;
 using std::endl;
-using std::ofstream; // --- NEW ---
+using std::ofstream; 
 
 void File::printInfo() const {
     cout << "-rw-    " << name;
 }
 
-// --- NEW ---
 // Helper function to write a string safely to a binary file
 // We first write the size of the string, then the string's data.
 inline void writeString(ofstream& file, const string& str) {
@@ -19,7 +18,7 @@ inline void writeString(ofstream& file, const string& str) {
     file.write(str.c_str(), len);
 }
 
-// --- NEW ---
+
 // Implementation of the save contract for a File
 void File::save(ofstream& file) const {
     // 1. Write a marker character 'F' to identify this as a File

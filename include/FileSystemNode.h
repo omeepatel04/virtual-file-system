@@ -2,7 +2,7 @@
 #define FILESYSTEMNODE_H
 
 #include <string>
-#include <fstream> // --- NEW --- For file operations
+#include <fstream>
 
 using std::string;
 
@@ -23,10 +23,10 @@ public:
     virtual string getType() const = 0;
     virtual void printInfo() const = 0;
 
-    // --- NEW ---
+
     // A "contract" function to make all nodes saveable
     // We pass an output file stream (ofstream) by reference
     virtual void save(std::ofstream& file) const = 0;
 };
 
-#endif // FILESYSTEMNODE_H
+#endif

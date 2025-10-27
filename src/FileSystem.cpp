@@ -1,18 +1,18 @@
 #include "FileSystem.h"
 #include "Directory.h"
-#include "File.h"      // --- NEW --- Need this for loading
+#include "File.h"    
 #include <string>
 #include <vector>
-#include <fstream>     // --- NEW ---
-#include <iostream>    // --- NEW ---
+#include <fstream>    
+#include <iostream>   
 
 using std::string;
 using std::vector;
-using std::ofstream; // --- NEW ---
-using std::ifstream; // --- NEW ---
-using std::ios;      // --- NEW ---
+using std::ofstream; 
+using std::ifstream; 
+using std::ios;      
 
-// --- NEW --- Helper functions for binary I/O
+// Helper functions for binary I/O
 inline void writeString(ofstream& file, const string& str) {
     size_t len = str.length();
     file.write(reinterpret_cast<const char*>(&len), sizeof(len));
@@ -116,7 +116,6 @@ void FileSystem::saveSystem(const string& filename) const {
     std::cout << "File system saved to " << filename << std::endl;
 }
 
-// --- NEW ---
 void FileSystem::loadSystem(const string& filename) {
     ifstream file(filename, ios::binary);
     if (!file) {

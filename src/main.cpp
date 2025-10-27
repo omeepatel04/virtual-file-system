@@ -136,7 +136,6 @@ int main() {
                     cout << "Error: Cannot remove '" << name << "': Directory not empty" << endl;
                 } else {
                     // Safe to delete (either empty, or -r was used)
-                    // Our destructor is already recursive!
                     currentDir->removeChild(name);
                     delete dirToRemove;
                 }
@@ -195,7 +194,7 @@ int main() {
             File* file = (File*)node;
             cout << file->getContent() << endl;
 
-        // --- NEW FILE HANDLING COMMANDS ---
+            
         } else if (command == "save") {
             string filename;
             ss >> filename;
