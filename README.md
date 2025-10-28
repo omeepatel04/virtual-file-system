@@ -11,6 +11,14 @@ This is a deep dive into core OOP principles, advanced memory management, and C+
 
 ---
 
+## 🚀 Live Demo
+
+Here is a live demo of the VFS in action, showing the creation of directories and files, writing/reading content, and saving the session state.
+
+![VFS Live Demo](assets/Animation-SpedUp.gif)
+
+---
+
 ## 🏛️ System Architecture
 
 The core of the VFS is a **polymorphic tree**. An abstract base class, `FileSystemNode`, defines a common interface (a "contract") for all entities. The `File` and `Directory` classes inherit from this base and provide concrete implementations of its virtual functions.
@@ -20,7 +28,7 @@ A `Directory` object manages its contents via an `std::map`, mapping string name
 1.  **Polymorphism:** The `Directory` can hold both `File*` and `Directory*` pointers in the same collection, allowing commands like `ls` to treat them uniformly.
 2.  **Recursive Memory Management:** A recursive, virtual destructor is implemented. Calling `delete` on the `root` directory triggers a "cascading delete," which safely de-allocates the entire tree from the heap, ensuring **zero memory leaks**.
 
-
+![VFS Architecture Diagram](assets/vfs-uml.png)
 
 ---
 
